@@ -1,0 +1,42 @@
+{
+  "name": "cji-minify",
+  "version": "1.0.0",
+  "description": "Css, Js and image compressor with gulp. Additionally supports deploy files on server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KonstantinLev/cji-minify.git"
+  },
+  "keywords": [
+    "css",
+    "js",
+    "image",
+    "compressor",
+    "gulp",
+    "deploy"
+  ],
+  "bugs": {
+    "url": "https://github.com/KonstantinLev/cji-minify/issues"
+  },
+  "homepage": "https://github.com/KonstantinLev/cji-minify#readme",
+  "author": "KonstantinLev",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.18.11",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-cache": "^0.4.6",
+    "gulp-clean-css": "^3.3.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-util": "^3.0.8",
+    "imagemin-jpeg-recompress": "^5.1.0",
+    "imagemin-pngquant": "^6.0.0",
+    "vinyl-ftp": "^0.6.0"
+  }
+}

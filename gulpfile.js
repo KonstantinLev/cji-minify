@@ -15,16 +15,15 @@ var imageminPng  = require('imagemin-pngquant');
 gulp.task('minify', ['minify-js', 'minify-css']);
 gulp.task('minify-js', function() {
     return gulp.src([
-        'libs/jquery.js',
-        'js/test.js',
-        'js/main.js', // всегда в конце
+        'pathToJsFiles/file.js',
+        'js/main.js', // always last
     ])
         .pipe(concat('script.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('js'));
 });
 gulp.task('minify-css', function() {
-    return gulp.src(['css/**/*.css', '!css/script.min.css'])
+    return gulp.src(['pathToCssFolder/**/*.css', '!pathToCssFolder/script.min.css'])
         .pipe(autoprefixer(['last 25 versions']))
         .pipe(concat('script.min.css'))
         .pipe(cleanCSS())
@@ -34,22 +33,20 @@ gulp.task('minify-css', function() {
 //build src application
 gulp.task('build', ['remove-src', 'imagemin', 'minify-css', 'minify-js'], function() {
     gulp.src([
-        '*.php',
-        '*.js',
-        '*.json',
-        '.htaccess',
+        'pathToMainFolder/*.php',
+        'pathToMainFolder/.htaccess',
     ]).pipe(gulp.dest('src'));
 
     gulp.src([
-        'css/script.min.css',
+        'pathToCssFolder/script.min.css',
     ]).pipe(gulp.dest('src/css'));
 
     gulp.src([
-        'js/script.min.js',
+        'pathToJsFolder/script.min.js',
     ]).pipe(gulp.dest('src/js'));
 
     gulp.src([
-        'fonts/**/*',
+        'pathToFontsFolder/fonts/**/*',
     ]).pipe(gulp.dest('src/fonts'));
 });
 gulp.task('remove-src', function() { return del.sync('src'); });
@@ -57,7 +54,7 @@ gulp.task('clearcache', function () { return cache.clearAll(); });
 
 // compress image
 gulp.task('imagemin', function () {
-    return gulp.src('img/**/*')
+    return gulp.src('pathToImgFolder/**/*')
         .pipe(gulp.dest('src/img')) //Копируем изображения заранее, imagemin может пропустить парочку )
         .pipe(cache(imagemin([
             imagemin.gifsicle({interlaced: true}),
